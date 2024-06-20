@@ -1,0 +1,18 @@
+Initializing Dot Net Core Web API Solution
+dotnet -h
+dotnet new sln
+dotnet new webapi -controllers -n API
+dotnet sln list
+dotnet sln add API
+code .
+Extension -> C# Dev Kit
+Extension -> Material Icon Theme
+Extension -> Nuget Gallery
+Extension -> SQLite
+dotnet dev-certs https --trust
+Nuget -> Microsoft.EntityFrameworkCore.Sqlite
+Nuget -> Microsoft.EntityFrameworkCore.Design
+dotnet tool list -g
+dotnet tool install --global dotnet-ef --version 8.0.6
+dotnet-ef migrations add InitialCreate -o Data/Migrations
+dotnet-ef database update
