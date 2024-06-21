@@ -18,3 +18,8 @@ dotnet-ef migrations add InitialCreate -o Data/Migrations
 dotnet-ef database update
 ng new app-name
 Extension -> Angular Language Service
+dotnet-ef migrations add UpdatedUserEntity
+dotnet-ef database update
+JSON Web Tokens (JWT) for Auth Token
+Nuget -> System.IdentityModel.Tokens.Jwt
+Nuget -> Microsoft.AspNetCore.Authentication.JwtBearer
