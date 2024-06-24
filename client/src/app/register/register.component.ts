@@ -23,8 +23,7 @@ export class RegisterComponent {
         this.onCancel();
       },
       error: (e) => {
-        console.error(e.error);
-        this.toastrService.error(e.error);
+        this.toastrService.error(Array.isArray(e) ? e.join('<br />') : e, undefined, { enableHtml: true });
       }
     });
   }

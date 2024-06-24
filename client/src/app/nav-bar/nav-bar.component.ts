@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
     this.accountService.loginUser(this.model).subscribe({
       next: (n) => console.log(n),
       error: (e) => {
-        this.toastrService.error(e.error);
+        this.toastrService.error(Array.isArray(e) ? e.join('<br />') : e, undefined, { enableHtml: true });
       },
       complete: () => { this.model = {}; }
     });

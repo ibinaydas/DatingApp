@@ -1,0 +1,11 @@
+<h4>Internal Server Error</h4>
+@if(error) {
+<h5 class="text-danger">Error: {{error.message}}</h5>
+<p class="font-weight-bold">This is a server side error. Here's what you can do:</p>
+<ol>
+    <li>Open dev-tools and check the failing request in Network tab</li>
+    <li>Try to reproduce the request in Postman</li>
+</ol>
+<p class="font-weight-bold">Stack trace:</p>
+<code class="mt-5">{{error.details}}</code>
+}
