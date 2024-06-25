@@ -3,6 +3,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { User } from '../models/user';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AccountService {
   public currentUser = signal<User | null>(null);
   private http = inject(HttpClient);
   private router = inject(Router);
-  private readonly baseUrl: string = 'http://localhost:5000/api/account/';
+  private readonly baseUrl = environment.apiUrl + '/account/';
 
   public registerUser(model: any) {
     return this.http.post<User>(this.baseUrl + 'register', model)
@@ -48,7 +49,6 @@ export class AccountService {
     if (currentUser) {
       const parsedObj = JSON.parse(currentUser);
       this.currentUser.set(parsedObj);
-      this.router.navigateByUrl('/members');
     }
   }
 }

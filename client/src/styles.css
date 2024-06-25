@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+.member-tabset>.nav>.nav-item>.nav-link.active {
+    border-color: gray;
+}
+
+.member-tabset>.tab-content {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #303030;
+}

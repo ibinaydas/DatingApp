@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+[Authorize]
 public class UsersController(IUserRepository userRepository) : BaseController
 {
     [HttpGet]
@@ -14,7 +15,6 @@ public class UsersController(IUserRepository userRepository) : BaseController
         return Ok(users);
     }
 
-    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<MemberDto>> GetUserById(int id)
     {
@@ -26,7 +26,6 @@ public class UsersController(IUserRepository userRepository) : BaseController
         return user;
     }
 
-    [Authorize]
     [HttpGet("{name}")]
     public async Task<ActionResult<MemberDto>> GetUserByUsername(string name)
     {
