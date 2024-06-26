@@ -19,6 +19,13 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
         context.Entry(user).State = EntityState.Modified;
     }
 
+    public async Task<AppUser?> GetUserByNameAsync(string username)
+    {
+        return await context.Users
+        .Where(x => x.UserName.ToLower() == username.ToLower())
+            .SingleOrDefaultAsync();
+    }
+
     public async Task<IEnumerable<MemberDto>> GetMembersAsync()
     {
         return await context.Users
