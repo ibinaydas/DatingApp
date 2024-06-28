@@ -12,10 +12,5 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
   styleUrl: './app.component.css',
   imports: [RouterOutlet, NavBarComponent, HomeComponent, NgxSpinnerComponent]
 })
-export class AppComponent implements OnInit {
-  private accountService = inject(AccountService);
-
-  ngOnInit() {
-    this.accountService.setCurrentUser();
-  }
+export class AppComponent {
 }

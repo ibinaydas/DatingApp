@@ -19,5 +19,5 @@ public class AppUser
     public required string City { get; set; }
     public required string State { get; set; }
     public required string Country { get; set; }
-    public List<Photo>? Photos { get; set; }
+    public List<Photo> Photos { get; set; } = new List<Photo>();
 }

@@ -14,12 +14,19 @@ export class AccountService {
   private router = inject(Router);
   private readonly baseUrl = environment.apiUrl + '/account/';
 
+  constructor() {
+    const currentUser = localStorage.getItem('dAUser');
+    if (currentUser) {
+      const parsedObj = JSON.parse(currentUser);
+      this.currentUser.set(parsedObj);
+    }
+  }
+
   public registerUser(model: any) {
     return this.http.post<User>(this.baseUrl + 'register', model)
       .pipe(map(user => {
         if (user) {
-          localStorage.setItem('dAUser', JSON.stringify(user));
-          this.currentUser.set(user);
+          this.setCurrentUser(user);
         }
         return user;
       }));
@@ -29,8 +36,7 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + 'login', model)
       .pipe(map(user => {
         if (user) {
-          localStorage.setItem('dAUser', JSON.stringify(user));
-          this.currentUser.set(user);
+          this.setCurrentUser(user);
           this.router.navigateByUrl('/members');
         }
         return user;
@@ -44,11 +50,8 @@ export class AccountService {
   }
 
 
-  public setCurrentUser() {
-    const currentUser = localStorage.getItem('dAUser');
-    if (currentUser) {
-      const parsedObj = JSON.parse(currentUser);
-      this.currentUser.set(parsedObj);
-    }
+  public setCurrentUser(user: User) {
+    localStorage.setItem('dAUser', JSON.stringify(user));
+    this.currentUser.set(user);
   }
 }

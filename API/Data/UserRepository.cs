@@ -22,7 +22,8 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
     public async Task<AppUser?> GetUserByNameAsync(string username)
     {
         return await context.Users
-        .Where(x => x.UserName.ToLower() == username.ToLower())
+            .Where(x => x.UserName.ToLower() == username.ToLower())
+            .Include(i => i.Photos)
             .SingleOrDefaultAsync();
     }
 
