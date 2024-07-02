@@ -5,6 +5,7 @@ using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers;
 
@@ -72,7 +73,8 @@ public class UsersController(IUserRepository userRepository, IMapper mapper, IPh
         var photo = new Photo
         {
             Url = results.SecureUrl.AbsoluteUri,
-            PublicId = results.PublicId
+            PublicId = results.PublicId,
+            IsMain = user.Photos.IsNullOrEmpty()
         };
         user.Photos.Add(photo);
         if (await userRepository.SaveAllAsync())

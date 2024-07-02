@@ -1,0 +1,11 @@
+<div class="form-floating mb-3">
+    <input [type]="type()" class="form-control" [placeholder]="label()" [formControl]="control"
+        [class.is-invalid]="control.touched && control.errors" />
+    <label>{{label()}}</label>
+    <div class="invalid-feedback" *ngIf="control.hasError('required')">{{label()}} is required</div>
+    <div class="invalid-feedback" *ngIf="control.hasError('minlength')">{{label()}} must be atleast
+        {{control.errors?.['minlength'].requiredLength}} characters</div>
+    <div class="invalid-feedback" *ngIf="control.hasError('maxlength')">{{label()}} must be atmost
+        {{control.errors?.['maxlength'].requiredLength}} characters</div>
+    <div class="invalid-feedback" *ngIf="control.hasError('noMatch')">{{label()}}s don't match</div>
+</div>
